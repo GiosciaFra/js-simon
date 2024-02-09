@@ -18,11 +18,11 @@ const targetDate = new Date();
 
 // imposto la data e l'ora per lunedi alle 9.30
 // questo comando i resituisce il giorno attuale
-targetDate.setDate((targetDate.getDate() - (1 + 7 - targetDate.getDay())) % 7);
+targetDate.setDate(now.getDate() + (1 + 7 - now.getDay()) % 7);
 
 targetDate.setHours(9, 30, 0, 0);
 
-console.log(targetDate);
+// console.log(targetDate);
 
 
 // calcoliamo la differenza
@@ -33,7 +33,7 @@ const timeDifference = targetDate.getTime() - now.getTime();
 
 function formatTime(ms) {
     const seconds =Math.floor(ms / 1000) % 60;
-    const minutes = Math.floor(ms / (1000 / 60)) % 60;
+    const minutes = Math.floor(ms / (1000 * 60)) % 60;
     const hours = Math.floor(ms / (1000 * 60 * 60)) % 24;
 
     return `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
@@ -48,9 +48,15 @@ function updateCountdown() {
 
 
     if (remainingTime > 0) {
-        ocument.getElementById('countdown').innerText = formatTime(remainingTime);
+        document.getElementById('countdown').innerText = formatTime(remainingTime);
     } else {
         document.getElementById('countdown').innerText = "Il countdown è scaduto!";
     }
 
 }
+
+// attraverso 'setinterval' aggiorniamo ogni s il countdown
+
+setInterval(updateCountdown, 1000);
+
+updateCountdown();
