@@ -9,3 +9,17 @@
 // Quanti millisecondi mi separano da domani alle 9:30?
 // Esiste un oggetto JS in grado di gestire le date?
 // Esistono dei metodi per trasformare una data in millisecondi?
+
+// otteniamo l'ora attuale
+
+const now = new Date();
+
+// imposto la data e l'ora per lunedi alle 9.30
+
+
+// questo comando i resituisce il giorno attuale
+targetDate.setDate((targetDate.getDate() - (1 + 7 - targetDate.getDay())) % 7);
+
+targetDate.setHours(9, 30, 0, 0);
+
+
